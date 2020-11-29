@@ -1,20 +1,22 @@
 import React, { Component } from 'react'
-import {createUser} from '../service/Action'
-import {getUsers} from '../service/Action'
-
 
 class RegistrationForm extends Component {
-    state = {
-        isLoading: true,
-        groups: [],
-        genderList:[],
-        bankNameList :[],
-        email:"",
-        firstName:"",
-        gender:"",
-        bankName:"",
-        dateOfBirth:""
-    };
+
+    constructor(prop){
+        super(prop);
+
+        this.state = {
+            isLoading: true,
+            genderList:[],
+            bankNameList :[],
+            email:"",
+            firstName:"",
+            gender:"",
+            bankName:"",
+            dateOfBirth:""
+        };
+    }
+
 
     async componentDidMount() {
         const response = await fetch('/api/users');
@@ -33,7 +35,7 @@ class RegistrationForm extends Component {
     }
 
     render() {
-        const {groups, isLoading, genderList, bankNameList} = this.state;
+        const {isLoading, genderList, bankNameList} = this.state;
         if (isLoading) {
             return <p>Loading...</p>;
         }
@@ -44,13 +46,7 @@ class RegistrationForm extends Component {
             this.setState({[nam]: val});
         };
 
-        const handleSubmit = (event) => {
-            const user={
-                'email':this.state.email,
-                "firstName":this.state.firstName,
-                'gender':this.state.gender
-            };
-
+        const handleSubmit = () => {
             fetch('/api/add/user', {
                 method: 'POST',
                 // We convert the React state to JSON and send it as the POST body
@@ -62,9 +58,7 @@ class RegistrationForm extends Component {
                 console.log(response);
                 return response.json();
             });
-
-
-            console.log(user);
+            this.props.history.push("./success");
         };
 
         return (
