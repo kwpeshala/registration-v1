@@ -15,7 +15,7 @@ CREATE TABLE bank_info
 
 CREATE TABLE user
 (
-  user_id        CHAR(10),
+  user_id        INT (10) AUTO_INCREMENT,
   first_name     VARCHAR(32),
   last_name      VARCHAR(32),
   nic            CHAR(20),
