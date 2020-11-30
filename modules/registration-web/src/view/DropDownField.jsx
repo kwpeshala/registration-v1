@@ -1,17 +1,18 @@
 import React from 'react';
 
-const DropDownField = (props)=> {
+const DropDownField = (props) => {
     return (
         <div>
-            <label>
+            <label className="lable">
                 {props.fieldName}:
-                <select
-                    name={props.field}
-                    onChange={props.fieldChange}
-                    required={props.fieldRequired} >
-                {props.optionList}
-                </select>
             </label>
+            <select className="field"
+                name={props.field}
+                onChange={props.fieldChange}
+                required={props.fieldRequired}>
+                {props.optionList}
+            </select>
+
         </div>
     )
 };

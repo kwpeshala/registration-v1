@@ -6,9 +6,9 @@ class Home extends Component {
     }
 
     render() {
-        const onButtonClick=(e)=>{
+        const onButtonClick=()=>{
             this.props.history.push("./registration");
-        }
+        };
 
         return (
             <div>

@@ -41,7 +41,8 @@ public class UserRepositoryImpl implements UserRepository {
             logger.debug("Creating User");
 
             Map<String, Object> parameters = new HashMap<String, Object>();
-            parameters.put("user_id", user.getUserId());
+//            parameters.put("user_id", user.getUserId());
+            parameters.put("username", user.getUsername());
             parameters.put("first_name", user.getFirstName());
             parameters.put("last_name", user.getLastName());
             parameters.put("nic", user.getNic());

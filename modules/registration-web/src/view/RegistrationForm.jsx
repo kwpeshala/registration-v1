@@ -1,6 +1,4 @@
 import React, {Component} from 'react'
-import InputField from "./InputField";
-import DropDownField from "./DropDownField";
 import Field from "./Field";
 
 class RegistrationForm extends Component {
@@ -40,20 +38,20 @@ class RegistrationForm extends Component {
     }
 
     render() {
-        const {isLoading, genderList, bankNameList} = this.state;
+        const {isLoading} = this.state;
         if (isLoading) {
             return <p>Loading...</p>;
         }
 
         const fields=[
-            {filedCategory:"inputField", fieldName:"Username ", field:"username", fieldType:"text", fieldRequired:true},
+            {filedCategory:"inputField", fieldName:"Username * ", field:"username", fieldType:"text", fieldRequired:true},
             {filedCategory:"inputField", fieldName:"First Name ", field:"firstName", fieldType:"text", fieldRequired:false},
             {filedCategory:"inputField", fieldName:"Last Name ", field:"lastName", fieldType:"text", fieldRequired:false},
             {filedCategory:"inputField", fieldName:"NIC ", field:"nic", fieldType:"text", fieldRequired:false},
-            {filedCategory:"inputField", fieldName:"Date of Birth ", field:"dateOfBirth", fieldType:"date", fieldRequired:false},
+            {filedCategory:"inputField", fieldName:"Date of Birth ", field:"dateOfBirth", fieldType:"date", fieldRequired:true},
             {filedCategory:"dropDownField", fieldName:"Gender ", field:"gender", fieldRequired:true, optionList:this.state.genderList},
             {filedCategory:"inputField", fieldName:"Phone Number ", field:"msisdn", fieldType:"text", fieldRequired:false},
-            {filedCategory:"inputField", fieldName:"Email Address ", field:"email", fieldType:"email", fieldRequired:true},
+            {filedCategory:"inputField", fieldName:"Email Address * ", field:"email", fieldType:"email", fieldRequired:true},
             {filedCategory:"dropDownField", fieldName:"Bank Name ", field:"bank", fieldRequired:true, optionList:this.state.bankNameList},
             {filedCategory:"inputField", fieldName:"Account No ", field:"accountNumber", fieldType:"text", fieldRequired:false}
             ];
@@ -67,14 +65,13 @@ class RegistrationForm extends Component {
         const handleSubmit = () => {
             fetch('/api/add/user', {
                 method: 'POST',
-                // We convert the React state to JSON and send it as the POST body
                 body: JSON.stringify(this.state),
                 headers: {
                     'Content-Type': 'application/json'
                 }
             }).then(function (response) {
                 console.log(response);
-                return response.json();
+                // return response.json();
             });
             this.props.history.push("./success");
         };
@@ -84,7 +81,7 @@ class RegistrationForm extends Component {
                 <h1>Create Account</h1>
 
                 <div>
-                    {fields.map((item, index)=>{
+                    {fields.map((item)=>{
                         return <Field filedCategory={item.filedCategory}
                                       fieldName={item.fieldName}
                                       field={item.field}
@@ -96,7 +93,7 @@ class RegistrationForm extends Component {
                     })}
                 </div>
 
-                <div>
+                <div className="submit">
                     <button>Submit</button>
                 </div>
 

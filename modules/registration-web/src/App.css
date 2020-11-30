@@ -1,5 +1,17 @@
 .App {
-  text-align: center;
+  text-align: left;
+}
+
+.lable{
+  width:200px
+}
+
+.field{
+  width:400px
+}
+
+.submit{
+  text-align: right;
 }
 
 .App-logo {

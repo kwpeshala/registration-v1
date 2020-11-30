@@ -1,16 +1,17 @@
 import React from 'react';
 
-const InputField = (props)=> {
+const InputField = (props) => {
     return (
         <div>
-            <label>
+            <label className="lable">
                 {props.fieldName}:
-                <input
-                    name={props.field}
-                    type={props.fieldType}
-                    onChange={props.fieldChange}
-                    required={props.fieldRequired} />
             </label>
+            <input className="field"
+                   name={props.field}
+                   type={props.fieldType}
+                   onChange={props.fieldChange}
+                   required={props.fieldRequired}/>
+
         </div>
     )
 };
