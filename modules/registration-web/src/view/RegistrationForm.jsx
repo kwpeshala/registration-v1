@@ -52,7 +52,7 @@ class RegistrationForm extends Component {
             {filedCategory:"dropDownField", fieldName:"Gender ", field:"gender", fieldRequired:true, optionList:this.state.genderList},
             {filedCategory:"inputField", fieldName:"Phone Number ", field:"msisdn", fieldType:"text", fieldRequired:false},
             {filedCategory:"inputField", fieldName:"Email Address * ", field:"email", fieldType:"email", fieldRequired:true},
-            {filedCategory:"dropDownField", fieldName:"Bank Name ", field:"bank", fieldRequired:true, optionList:this.state.bankNameList},
+            {filedCategory:"dropDownField", fieldName:"Bank Name ", field:"bankName", fieldRequired:true, optionList:this.state.bankNameList},
             {filedCategory:"inputField", fieldName:"Account No ", field:"accountNumber", fieldType:"text", fieldRequired:false}
             ];
 

@@ -1,8 +1,11 @@
-# registration
+please refer following READ.ME files to set up server and web
 
-Registration form 
-Technologies : Java, Spring boot, MySQL, React
+web
+----
 
-Run registration-server
+modules/registration-web/readme.md
 
-mvn spring-boot:run
+server
+------
+
+modules/registration-server/readme.md
