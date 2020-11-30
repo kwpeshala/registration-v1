@@ -7,6 +7,7 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 function App() {
   return (
     <div className="App">
+        <title>Registration Form</title>
       {/*<header className="App-header">*/}
         {/*<RegistrationForm/>*/}
       {/*</header>*/}
