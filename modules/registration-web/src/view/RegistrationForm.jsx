@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import InputField from "./InputField";
 import DropDownField from "./DropDownField";
+import Field from "./Field";
 
 class RegistrationForm extends Component {
 
@@ -44,6 +45,19 @@ class RegistrationForm extends Component {
             return <p>Loading...</p>;
         }
 
+        const fields=[
+            {filedCategory:"inputField", fieldName:"Username ", field:"username", fieldType:"text", fieldRequired:true},
+            {filedCategory:"inputField", fieldName:"First Name ", field:"firstName", fieldType:"text", fieldRequired:false},
+            {filedCategory:"inputField", fieldName:"Last Name ", field:"lastName", fieldType:"text", fieldRequired:false},
+            {filedCategory:"inputField", fieldName:"NIC ", field:"nic", fieldType:"text", fieldRequired:false},
+            {filedCategory:"inputField", fieldName:"Date of Birth ", field:"dateOfBirth", fieldType:"date", fieldRequired:false},
+            {filedCategory:"dropDownField", fieldName:"Gender ", field:"gender", fieldRequired:true, optionList:this.state.genderList},
+            {filedCategory:"inputField", fieldName:"Phone Number ", field:"msisdn", fieldType:"text", fieldRequired:false},
+            {filedCategory:"inputField", fieldName:"Email Address ", field:"email", fieldType:"email", fieldRequired:true},
+            {filedCategory:"dropDownField", fieldName:"Bank Name ", field:"bank", fieldRequired:true, optionList:this.state.bankNameList},
+            {filedCategory:"inputField", fieldName:"Account No ", field:"accountNumber", fieldType:"text", fieldRequired:false}
+            ];
+
         const changeHandler = (event) => {
             let nam = event.target.name;
             let val = event.target.value;
@@ -69,82 +83,18 @@ class RegistrationForm extends Component {
             <form onSubmit={handleSubmit}>
                 <h1>Create Account</h1>
 
-                <InputField fieldName={"Username "}
-                            field={"username"}
-                            fieldType={"text"}
-                            fieldChange={changeHandler}
-                            fieldRequired={true}
-                />
-
-                <InputField fieldName={"First Name "}
-                            field={"firstName"}
-                            fieldType={"text"}
-                            fieldChange={changeHandler}
-                            fieldRequired={false}
-                />
-
-                <InputField fieldName={"Last Name "}
-                            field={"lastName"}
-                            fieldType={"text"}
-                            fieldChange={changeHandler}
-                            fieldRequired={false}
-                />
-
-                <InputField fieldName={"NIC "}
-                            field={"nic"}
-                            fieldType={"text"}
-                            fieldChange={changeHandler}
-                            fieldRequired={false}
-                />
-
-                <InputField fieldName={"Date of Birth "}
-                            field={"dateOfBirth"}
-                            fieldType={"date"}
-                            fieldChange={changeHandler}
-                            fieldRequired={false}
-                />
-
-                <DropDownField fieldName={"Gender "}
-                               field={"gender"}
-                               fieldChange={changeHandler}
-                               fieldRequired={true}
-                               optionList={genderList.map(gender => (
-                                   <option key={gender}>{gender}</option>
-                               ))}
-
-                />
-
-                <InputField fieldName={"Phone Number "}
-                            field={"msisdn"}
-                            fieldType={"text"}
-                            fieldChange={changeHandler}
-                            fieldRequired={false}
-                />
-
-                <InputField fieldName={"Email Address "}
-                            field={"email"}
-                            fieldType={"email"}
-                            fieldChange={changeHandler}
-                            fieldRequired={true}
-                />
-
-                <DropDownField fieldName={"Bank Name "}
-                               field={"bankName"}
-                               fieldChange={changeHandler}
-                               fieldRequired={true}
-                               optionList={bankNameList.map(bank => (
-                                   <option key={bank}>{bank}</option>
-                               ))}
-
-                />
-
-                <InputField fieldName={"Account Number "}
-                            field={"accountNumber"}
-                            fieldType={"text"}
-                            fieldChange={changeHandler}
-                            fieldRequired={false}
-                />
-
+                <div>
+                    {fields.map((item, index)=>{
+                        return <Field filedCategory={item.filedCategory}
+                                      fieldName={item.fieldName}
+                                      field={item.field}
+                                      fieldType={item.fieldType}
+                                      fieldChange={changeHandler}
+                                      fieldRequired={item.fieldRequired}
+                                      optionList={item.optionList}
+                        />
+                    })}
+                </div>
 
                 <div>
                     <button>Submit</button>
